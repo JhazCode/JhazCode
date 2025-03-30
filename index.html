@@ -1,0 +1,290 @@
+<!-- 
+    Apuli, Jhazel John B.
+    IT235
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jhazel's Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+        }
+
+        nav {
+            background: linear-gradient(to right, #2c3e50, #3498db);
+            padding: 0.8rem 2rem;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-left, .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        nav a:hover {
+            background-color: rgba(255,255,255,0.1);
+            transform: translateY(-2px);
+        }
+
+        .nav-right a {
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        .nav-right a:hover {
+            background-color: rgba(255,255,255,0.2);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 3rem 2rem;
+            text-align: center;
+            color: white;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .profile-container {
+            flex-shrink: 0;
+        }
+
+        .profile-pic {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            object-fit: cover;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .profile-pic:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        .hero-text {
+            text-align: left;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .hero p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 600px) {
+            .hero-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero-text {
+                text-align: center;
+            }
+        }
+
+        .portfolio-section {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            margin-bottom: 5rem;
+        }
+
+        .portfolio-section h2 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: #2c3e50;
+            font-size: 1.6rem;
+            position: relative;
+        }
+
+        .portfolio-section h2::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 2px;
+            background: #3498db;
+            margin: 8px auto;
+        }
+
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .skill-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+        }
+
+        .skill-card h3 {
+            color: #2c3e50;
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+        }
+
+        .skill-card p {
+            color: #666;
+            line-height: 1.4;
+            font-size: 0.9rem;
+        }
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .project-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+        }
+
+        .project-card h3 {
+            color: #2c3e50;
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+        }
+
+        .project-card p {
+            color: #666;
+            line-height: 1.4;
+            font-size: 0.9rem;
+        }
+
+        footer {
+            background: linear-gradient(to right, #2c3e50, #3498db);
+            color: white;
+            text-align: center;
+            padding: 0.8rem;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-left">
+            <a href="index.html">Home</a>
+            <a href="contact.html">Contact Me</a>
+            <a href="certificates.html">Certificates</a>
+        </div>
+        <div class="nav-right">
+            <a href="login.html">Login</a>
+            <a href="register.html">Register</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="profile-container">
+                <img src="profile-pic.jpg" alt="Jhazel's Profile Picture" class="profile-pic">
+            </div>
+            <div class="hero-text">
+                <h1>Jhazel's Portfolio</h1>
+                <p>Full Stack Developer | SQL Developer | Tech Enthusiast</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="portfolio-section">
+        <h2>My Skills</h2>
+        <div class="skills">
+            <div class="skill-card">
+                <h3>Frontend Development</h3>
+                <p>HTML5, CSS</p>
+            </div>
+            <div class="skill-card">
+                <h3>Backend Development</h3>
+                <p>Java, Python, PHP, SQL</p>
+            </div>
+            <div class="skill-card">
+                <h3>Mobile App Development</h3>
+                <p>Java, Kotlin</p>
+            </div>
+        </div>
+
+        <h2>Recent Projects</h2>
+        <div class="projects">
+            <div class="project-card">
+                <h3>File Inspection App</h3>
+                <p>A simple and lightweight solution built with Java</p>
+            </div>
+            <div class="project-card">
+                <h3>Home Service App</h3>
+                <p>A mobile application for home services</p>
+            </div>
+            <div class="project-card">
+                <h3>Portfolio Website</h3>
+                <p>A simple portfolio website</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Portfolio. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+
+
